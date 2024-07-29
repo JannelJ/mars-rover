@@ -1,17 +1,11 @@
 public class Compass {
+    public static Point point;
+    public static Direction direction;
 
-    public enum Point {
-        NORTH,
-        EAST,
-        SOUTH,
-        WEST,
-    }
-    public enum Direction {
-        LEFT,
-        RIGHT,
-    }
-    String point;
-    String rotate(String point, String direction) {
+    public static Point rotate(Point point, Direction direction) {
         return null;
     }
+
+
+
 }
