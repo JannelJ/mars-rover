@@ -6,15 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class CompassTest {
 
     @Test
-    @DisplayName ("east facing test")
+    @DisplayName("east facing test")
     void checkIfPointIsFacingEast() {
 
-        Point point = Point.EAST;
+        Point point = Point.NORTH;
         Direction direction = Direction.RIGHT;
 
-        assertEquals(Point.EAST, Compass.rotate(Compass.point, Compass.direction));
-
+        assertEquals(Point.EAST, Compass.rotate(Point.NORTH, Direction.RIGHT)); // mistake of compass.point
 
     }
-}
 
+    @Test
+    void turningRightFromAllPoints() {
+        assertAll("Checking all directions turning right",
+                () -> assertEquals(Point.EAST, Compass.rotate(Point.NORTH, Direction.RIGHT)),
+                () -> assertEquals(Point.SOUTH, Compass.rotate(Point.EAST, Direction.RIGHT)),
+                () -> assertEquals(Point.WEST, Compass.rotate(Point.SOUTH, Direction.RIGHT)),
+                () -> assertEquals(Point.NORTH, Compass.rotate(Point.WEST, Direction.RIGHT))
+        );
+    }
+}
