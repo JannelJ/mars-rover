@@ -24,11 +24,11 @@ class InputParserTest {
 
     @Test
     void instructionsInvalidInput() {
-        String input = "LRU";
+        String input = "U";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             InputParser.parseInstructions(input);
         });
-        assertEquals("No enum constant org.example.Instruction.U", exception.getMessage());
+        assertEquals("Input must only contain L, R, or M", exception.getMessage());
     }
 
     @Test
@@ -38,7 +38,25 @@ class InputParserTest {
             InputParser.parseInstructions(input);
         });
         assertEquals("Input cannot be empty", exception.getMessage());
+    }
 
+    @Test
+    void instructionsNullInput(){
+        String input = null;
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            InputParser.parseInstructions(null);
+        });
+        assertEquals("Input cannot be empty", exception.getMessage());
+
+    }
+
+    @Test
+    void instructionWithoutM(){
+        String input= "LLRR";
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            InputParser.parseInstructions(input);
+        });
+        assertEquals("Instruction must include a move argument", exception.getMessage());
     }
 
 

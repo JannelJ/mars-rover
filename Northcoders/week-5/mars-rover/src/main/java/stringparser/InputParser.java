@@ -31,13 +31,24 @@ public class InputParser {
 
     public static Instruction[] parseInstructions(String instructionsInput) {
 
-        if(instructionsInput == null || instructionsInput.isEmpty()) {
+        if (instructionsInput == null || instructionsInput.isEmpty()) {
             throw new IllegalArgumentException("Input cannot be empty");
+        }
+        for (char c : instructionsInput.toCharArray()) { // iterate through the chars in string
+            if (c != 'L' && c != 'R' && c != 'M') {
+                throw new IllegalArgumentException("Input must only contain L, R, or M");
+            }
+            if (!instructionsInput.contains("M")) {
+                throw new IllegalArgumentException("Instruction must include a move argument");
+            }
+
         }
         return instructionsInput.chars() // returns each letter "LLR" as a character
                 // convert stream of characters into a stream of Instruction enums
-                .mapToObj(c -> Instruction.valueOf(String.valueOf((char) c))) // array of instruction enums (Instruction.L)
+                .mapToObj(ch -> Instruction.valueOf(String.valueOf((char) ch))) // array of instruction enums (Instruction.L)
                 .toArray(Instruction[]::new); // stores data in array
     }
-
 }
+
+
+
