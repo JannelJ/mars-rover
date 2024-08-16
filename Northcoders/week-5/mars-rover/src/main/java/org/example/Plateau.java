@@ -14,14 +14,17 @@ public class Plateau {
         this.rovers = new ArrayList<>();
     }
 
-    public void addRover(Rover rover) {
-        if (isPositionValid(rover.getPosition())) {
-            rovers.add(rover);
-        }
-    }
-
     public boolean isPositionValid(Position position) {
         return position.getX() >= 0 && position.getX() <= maxX &&
                 position.getY() >= 0 && position.getY() <= maxY;
+    }
+
+    public void addRover(Rover rover) {
+        if (isPositionValid(rover.getPosition())) {
+            rovers.add(rover);
+            System.out.println("Rover added to plateau at position: " + rover.getPosition());
+        } else {
+            System.out.println("Rover position is out of bounds");
+        }
     }
 }
