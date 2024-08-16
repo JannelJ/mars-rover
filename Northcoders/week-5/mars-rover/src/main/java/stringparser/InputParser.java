@@ -30,6 +30,10 @@ public class InputParser {
 
 
     public static Instruction[] parseInstructions(String instructionsInput) {
+
+        if(instructionsInput == null || instructionsInput.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be empty");
+        }
         return instructionsInput.chars() // returns each letter "LLR" as a character
                 // convert stream of characters into a stream of Instruction enums
                 .mapToObj(c -> Instruction.valueOf(String.valueOf((char) c))) // array of instruction enums (Instruction.L)

@@ -9,7 +9,7 @@ class InputParserTest {
 
 
     @Test
-    void parseInstructionsValidInput() {
+    void instructionsValidInput() {
        String input = "LRMMRM";
         Instruction[] expected = {
                 Instruction.L,
@@ -23,7 +23,7 @@ class InputParserTest {
     }
 
     @Test
-    void parseInstructionsInvalidInput() {
+    void instructionsInvalidInput() {
         String input = "LRU";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             InputParser.parseInstructions(input);
@@ -31,9 +31,19 @@ class InputParserTest {
         assertEquals("No enum constant org.example.Instruction.U", exception.getMessage());
     }
 
+    @Test
+    void instructionsEmptyInput() {
+        String input = "";
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            InputParser.parseInstructions(input);
+        });
+        assertEquals("Input cannot be empty", exception.getMessage());
+
+    }
+
 
     @Test
-    void parseCompassDirection_ValidInput() {
+    void compassDirection_ValidInput() {
     String input = "N";
         CompassDirection expected = CompassDirection.N;
         CompassDirection actual = InputParser.parseCompassDirection(input);
@@ -41,7 +51,7 @@ class InputParserTest {
     }
 
     @Test
-    void parseCompassDirection_InvalidInput() {
+    void compassDirection_InvalidInput() {
         String input = "B";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             InputParser.parseCompassDirection(input);

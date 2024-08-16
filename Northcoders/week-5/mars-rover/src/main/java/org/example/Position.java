@@ -25,7 +25,7 @@ public class Position {
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ", " + direction + ")";
+        return String.format("%d, %d, %s", x, y, direction);
     }
 
     public Position calculateNewPosition() { // for moving forwards
