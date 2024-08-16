@@ -33,7 +33,7 @@ public class Rover {
     }
     private void moveForward(){
         Position newPosition = this.position.calculateNewPosition();
-        if(plateau.isPositionValid(newPosition)) {
+        if (plateau.isPositionValid(newPosition)) {
             position = newPosition;
         } else {
             System.out.println("Move is out of bounds!");
