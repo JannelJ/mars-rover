@@ -66,5 +66,25 @@ class MarsRoverIntegrationTest {
         assertEquals("0, 5, N", rover1.getPosition().toString()); // should only move within bounds
     }
 
+    @Test
+    void testRover2OutOfBoundsInstruction() {
+        String[] input = {
+                "5 5",
+                "0 0 N",      // rover 2 initial position
+                "MMMMMMMMMM"  // rover 2 moves out of bounds
+        };
+        Plateau plateau = InputParser.parsePlateau(input[0]);
+        Position rover2Position = InputParser.parsePosition(input[1]);
+        Instruction[] roverInstructions = InputParser.parseInstructions(input[2]);
+        Rover rover2 = new Rover(rover2Position, plateau);
+
+        plateau.addRover(rover2);
+        for (Instruction instruction : roverInstructions) {
+            rover2.rotate(instruction.name().charAt(0));
+        } System.out.println("Final position: " + rover2.getPosition());
+        assertEquals("0, 5, N", rover2.getPosition().toString()); // should only move within bounds
+
+    }
+
 
 }
