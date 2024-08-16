@@ -25,8 +25,18 @@ public class InputParser {
     }
 
     public static CompassDirection parseCompassDirection(String directionInput) {
+
+        if (directionInput == null || directionInput.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be empty");
+        }
+        for (char c : directionInput.toCharArray()) { // iterate through the chars in string
+            if (c != 'E' && c != 'N' && c != 'S' && c != 'W') {
+                throw new IllegalArgumentException("Input must only contain E, N, S, or W");
+            }
+        }
         return CompassDirection.valueOf(directionInput);
     }
+
 
 
     public static Instruction[] parseInstructions(String instructionsInput) {

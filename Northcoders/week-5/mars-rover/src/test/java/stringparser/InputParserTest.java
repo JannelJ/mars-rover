@@ -61,7 +61,7 @@ class InputParserTest {
 
 
     @Test
-    void compassDirection_ValidInput() {
+    void compassDirectionValidInput() {
     String input = "N";
         CompassDirection expected = CompassDirection.N;
         CompassDirection actual = InputParser.parseCompassDirection(input);
@@ -69,13 +69,34 @@ class InputParserTest {
     }
 
     @Test
-    void compassDirection_InvalidInput() {
+    void compassDirectionInvalidInput() {
         String input = "B";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             InputParser.parseCompassDirection(input);
                 });
-        assertEquals("No enum constant org.example.CompassDirection.B", exception.getMessage());
+        assertEquals("Input must only contain E, N, S, or W", exception.getMessage());
     }
+
+    @Test
+    void compassDirectionEmptyInput() {
+        String input = "";
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            InputParser.parseCompassDirection(input);
+        });
+        assertEquals("Input cannot be empty", exception.getMessage());
+    }
+
+    @Test
+    void compassDirectionNullInput() {
+        String input = null;
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            InputParser.parseCompassDirection(null);
+        });
+        assertEquals("Input cannot be empty", exception.getMessage());
+
+    }
+
+
     @Test
     void addRoverOutOfBounds() {
         Plateau plateau = new Plateau(5,5);
