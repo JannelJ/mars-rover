@@ -27,4 +27,8 @@ public class Plateau {
             System.out.println("Rover position is out of bounds");
         }
     }
+
+    public List<Rover> getRovers() {
+        return rovers;
+    }
 }

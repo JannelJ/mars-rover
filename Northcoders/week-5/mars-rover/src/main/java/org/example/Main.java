@@ -13,7 +13,6 @@ public class Main {
         Plateau plateau = new Plateau(5,5);
 
         Rover rover1 = new Rover(new Position(1, 1, CompassDirection.N), plateau);
-
         plateau.addRover(rover1);
 
     }

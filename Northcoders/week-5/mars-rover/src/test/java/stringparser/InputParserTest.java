@@ -1,7 +1,6 @@
 package stringparser;
 
-import org.example.CompassDirection;
-import org.example.Instruction;
+import org.example.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,6 +47,22 @@ class InputParserTest {
             InputParser.parseCompassDirection(input);
                 });
         assertEquals("No enum constant org.example.CompassDirection.B", exception.getMessage());
+    }
+    @Test
+    void addRoverOutOfBounds() {
+        Plateau plateau = new Plateau(5,5);
+        Position outOfBoundsPosition = new Position(6,7, CompassDirection.N);
+        Rover roverOutOfBounds = new Rover(outOfBoundsPosition, plateau);
+        plateau.addRover(roverOutOfBounds);
+        assertEquals(0, plateau.getRovers().size());
+    }
+    @Test
+    void addValidRover(){
+            Plateau plateau = new Plateau(5,5);
+            Position validPosition = new Position(4,3, CompassDirection.N);
+            Rover inBounds = new Rover(validPosition, plateau);
+            plateau.addRover(inBounds);
+            assertEquals(1, plateau.getRovers().size());
     }
 }
 

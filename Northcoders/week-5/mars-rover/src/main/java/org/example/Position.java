@@ -23,6 +23,11 @@ public class Position {
         return direction;
     }
 
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ", " + direction + ")";
+    }
+
     public Position calculateNewPosition() { // for moving forwards
 
         int newX = this.x; // (x, the current position)
