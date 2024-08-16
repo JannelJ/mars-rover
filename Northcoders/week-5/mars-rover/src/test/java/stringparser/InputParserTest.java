@@ -93,9 +93,7 @@ class InputParserTest {
             InputParser.parseCompassDirection(null);
         });
         assertEquals("Input cannot be empty", exception.getMessage());
-
     }
-
 
     @Test
     void addRoverOutOfBounds() {

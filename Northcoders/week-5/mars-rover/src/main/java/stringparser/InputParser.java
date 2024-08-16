@@ -2,18 +2,18 @@ package stringparser;
 
 import org.example.CompassDirection;
 import org.example.Instruction;
-import org.example.PlateauSize;
+import org.example.Plateau;
 import org.example.Position;
 
 public class InputParser {
 
     // create methods for parsing the input strings
 
-    public static PlateauSize parsePlateauSize(String plateauInput) {
+    public static Plateau parsePlateau(String plateauInput) {
         String[] parts = plateauInput.split(" ");
         int maxX = Integer.parseInt(parts[0]);
         int maxY = Integer.parseInt(parts[1]);
-        return new PlateauSize(maxX, maxY);
+        return new Plateau(maxX, maxY);
     }
 
     public static Position parsePosition(String positionInput) {
