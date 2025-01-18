@@ -18,3 +18,19 @@ The Mars Rover project simulates the movement and navigation of rovers on a Mart
 ### 1. Clone the repository:
 ```bash
 git clone https://github.com/JannelJ/mars-rover.git
+```
+### 2. Navigate to the project directory
+```bash 
+cd mars-rover 
+```
+### 3. Build the project
+Ensure you have [Maven](url) installed. Run the following command to build the project:
+
+```bash
+mvn clean install
+```
+Alternatively, if you're using Gradle, run:
+
+```bash
+./gradlew build
+```
